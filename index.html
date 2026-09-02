@@ -63,21 +63,21 @@
               <span style="color: #10002B;font-size:52px">e</span>o
               <span style="color: #5A189A;font-size:52px">C</span>ompression
             </h1>
-            <!-- 【修改点 2a】作者列表：按需增删 author-block；href 填个人主页，
-                 不需要链接可把 <a>...</a> 换成纯文本 -->
+            <!-- 【修改点 2a】作者列表：按需增删 author-block；
+                 若想恢复链接，写法示例：<a href="个人主页">姓名</a> -->
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="#">Yichong Xia</a><sup>1</sup>,&nbsp;&nbsp;</span>
+                Yichong Xia<sup>1</sup>,&nbsp;&nbsp;</span>
               <span class="author-block">
-                <a href="#">Qinhong Wu</a><sup>2</sup>,&nbsp;&nbsp;</span>
+                Qinhong Wu<sup>2</sup>,&nbsp;&nbsp;</span>
               <span class="author-block">
-                <a href="#">Bin Chen<sup>*</sup></a><sup>2</sup>,&nbsp;&nbsp;</span>
+                Bin Chen<sup>*</sup><sup>2</sup>,&nbsp;&nbsp;</span>
               <span class="author-block">
-                <a href="#">Jinpeng Wang</a><sup>2</sup>,&nbsp;&nbsp;</span>
+                Jinpeng Wang<sup>2</sup>,&nbsp;&nbsp;</span>
               <span class="author-block">
-                <a href="#">Zeyuan Chen</a><sup>3</sup>,&nbsp;&nbsp;</span>
+                Zeyuan Chen<sup>3</sup>,&nbsp;&nbsp;</span>
               <span class="author-block">
-                <a href="#">Haoqian Wang</a><sup>1</sup></span>
+                Haoqian Wang<sup>1</sup></span>
             </div>
 
             <!-- 【修改点 2b】机构列表 -->
@@ -94,7 +94,7 @@
               <div class="publication-links">
                 <!-- arXiv Link. 【修改点 2c】替换为你的 arXiv 链接 -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank"
+                  <a href="https://arxiv.org/abs/2312.16963" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -105,7 +105,7 @@
 
                 <!-- Code Link. 【修改点 2d】替换为你的 GitHub 仓库链接 -->
                 <span class="link-block">
-                  <a href="https://github.com/yourname/yourrepo" target="_blank"
+                  <a href="https://github.com/Darc8-sun/VoTec-video-compression" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -154,7 +154,7 @@
               </div>
             </div>
             <!-- 【修改点 3a】场景标签文字 -->
-            <p class="compare-label">Scene A</p>
+            <p class="compare-label">Ours ($1.00 \times$）vs. H.264 ($1.25\times$）
           </div>
 
           <!-- 对比 1-2：场景 B -->
@@ -176,7 +176,7 @@
               </div>
             </div>
             <!-- 【修改点 3b】场景标签文字 -->
-            <p class="compare-label">Scene B</p>
+            <p class="compare-label">Ours ($1.00 \times$）vs. H.264 ($1.76\times$）</p>
           </div>
 
         </div>
@@ -192,7 +192,7 @@
   <section class="hero is-light is-small">
     <div class="hero-body">
       <div class="columns is-centered has-text-centered">
-        <h2 class="title is-3">Ours vs. Lossless</h2>
+        <h2 class="title is-3">Ours vs. Original</h2>
       </div>
       <div class="container">
         <div class="columns is-centered">
@@ -201,7 +201,7 @@
           <div class="column is-half">
             <div class="compare-item">
               <div class="twentytwenty-container" data-orientation="horizontal"
-                data-before-label="Ours" data-after-label="Lossless" ratio="0.5625">
+                data-before-label="Ours" data-after-label="Original" ratio="0.5625">
                 <div class="desc">Scene C</div>
                 <div class="video">
                   <video preload="auto" autoplay="autoplay" muted loop playsinline width="100%">
@@ -216,7 +216,7 @@
               </div>
             </div>
             <!-- 【修改点 4a】场景标签文字 -->
-            <p class="compare-label">Scene C</p>
+            <p class="compare-label">Ours (0.005bpp, CR=4,800)</p>
           </div>
 
           <!-- 对比 2-2：场景 D -->
@@ -238,7 +238,7 @@
               </div>
             </div>
             <!-- 【修改点 4b】场景标签文字 -->
-            <p class="compare-label">Scene D</p>
+            <p class="compare-label">Ours (0.008bpp, CR=3000)</p>
           </div>
 
         </div>
@@ -315,7 +315,8 @@ a \textbf{o}ne-step foundational Flow model. $\mathtt{VoRTeC}$ compresses spatio
   <!-- ================================================================
        Comparison with SOTA
        定量比较：【修改点 8】assets/images/comparison.png（表格截图）
-       定性比较：【修改点 9】静态对比图（assets/images/qual_*.png）
+       定性比较：【修改点 9】静态对比图（assets/images/qualitative.png）
+       延迟比较：【修改点 9b】assets/images/latency.png
        ================================================================ -->
   <section class="hero">
     <div class="hero-body">
@@ -323,31 +324,37 @@ a \textbf{o}ne-step foundational Flow model. $\mathtt{VoRTeC}$ compresses spatio
       <div class="columns is-centered has-text-centered">
         <div class="column">
           <h2 class="title is-3">Comparison with SOTA</h2>
-          <div class="title is-4">
-            <p>
-              Quantitative Comparison
-            </p>
-            <div class="column quantitative-figure">
-              <!-- 【修改点 8a】定量对比表格图片：命名为 comparison.png 放入 assets/images/ -->
-              <img src="./assets/images/comparison.png" alt="Quantitative comparison" />
-            </div>
+
+          <!-- 【修改点 8】定量对比表格图片：命名为 comparison.png 放入 assets/images/ -->
+          <div class="column quantitative-figure">
+            <img src="./assets/images/comparison.png" alt="Quantitative comparison" />
           </div>
 
-          <div class="title is-4">
-            <p>
-              Qualitative Comparison
-            </p>
-          </div>
+          <!-- 【修改点 8a】定量结果说明段落（comparison.png 下方），按需修改文字；
+               Markdown 的 **加粗** 在 HTML 中对应 <b>加粗</b> -->
+          <p style="max-width: 900px; margin: 24px auto 0; text-align: justify;">
+            VoRTeC consistently outperforms prior <b>neural</b>, <b>generative</b>, and
+            <b>traditional</b> video codecs on HEVC ClassB (720P / 1080P) and UVG (720P / 1080P).
+            With LoRA fine-tuning, <b>VoRTeC⁺</b> further extends the gains to
+            <b>64.53%–74.80%</b> LPIPS BD-Rate savings.
+          </p>
 
           <!-- 定性比较：单张静态对比大图
                【修改点 9】把你的定性对比图命名为 qualitative.png 放入 assets/images/。
                建议使用一张拼接好的宽幅大图（把各方法的重建结果横向拼在一起，
                可用 ImageMagick / PowerPoint / Photoshop 拼图）。 -->
-          <div class="column qualitative-figure">
+          <div class="column qualitative-figure" style="margin-top: 40px;">
             <img src="./assets/images/qualitative.png" alt="Qualitative comparison" />
             <!-- 【修改点 9a】图注：替换为你的图注说明（不需要可删除这一整个 <p> -->
             <p class="qualitative-caption">
 Left: Comparison of rate-perception performance and decoding efficiency. $\mathtt{VoRTeC}$ (Ours) delivers a better rate–perception trade-off than prior diffusion-based video codecs and enables real-time decoding, running up to $3\times$ faster than existing diffusion-based methods. Right: Qualitative comparison between baseline and our proposed approach. $\mathtt{VoRTeC}$ (Ours) is capable of reconstructing complex textures with realism, even at extremely low bit rates.            </p>
+          </div>
+
+          <!-- 【修改点 9b】Compression Latency 子标题 + 延迟对比图：
+               把图片命名为 latency.png 放入 assets/images/ 即可 -->
+          <h3 class="title is-4" style="margin-top: 56px;">Compression Latency</h3>
+          <div class="column latency-figure">
+            <img src="./assets/images/latency.png" alt="Compression latency" />
           </div>
 
 
