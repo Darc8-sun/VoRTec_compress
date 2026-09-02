@@ -133,6 +133,20 @@ body {
   margin-bottom: 5px;
 }
 
+/* ============ 全站图片统一宽度 ============
+   页面中所有插图（架构图 / 定量表 / 定性图 / 延迟图）都限制为
+   最大 1000px 并居中，保证各图视觉宽度一致。
+   想整体调宽/调窄，改下面这一个数值即可。 */
+.method-figure img,
+.quantitative-figure img,
+.qualitative-figure img,
+.latency-figure img {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: block;
+}
+
 /* ============ 定性比较静态大图 ============ */
 
 .qualitative-figure {
@@ -141,29 +155,28 @@ body {
 }
 
 .qualitative-figure img {
-  width: 100%;
   border: 1px solid #ddd;
   border-radius: 6px;
-  display: block;
 }
 
 .qualitative-caption {
-  margin-top: 12px;
-  font-size: 16px;
-  color: #555;
+  /* 与 comparison.png 下方说明段的格式保持一致：
+     限宽 900px、水平居中、两端对齐（字号颜色也用页面默认值） */
+  max-width: 900px;
+  margin: 24px auto 0;
+  text-align: justify;
 }
 
 /* ============ Method 架构图 ============ */
 
 .method-figure img {
-  width: 100%;
   border-radius: 6px;
 }
 
-/* ============ 定量比较表格图 ============ */
+/* ============ 延迟对比图 ============ */
 
-.quantitative-figure img {
-  width: 100%;
+.latency-figure img {
+  border-radius: 6px;
 }
 
 .video-caption {
@@ -171,4 +184,14 @@ body {
   color: #666;
   margin-top: 8px;
   text-align: center;
+}
+
+/* ============ 版块之间的灰色分隔线 ============
+   页面主体内容由多个并列的 <section> 组成（Hero / 视频两行 / Teaser /
+   Abstract / Method / Comparison with SOTA / BibTeX）。
+   给「紧跟上一个 section」的 section 顶部加一条细灰线，即每个版块之间
+   会出现一条分隔横线。去掉这条规则即可移除所有分隔线。 */
+
+body > section + section {
+  border-top: 1px solid #e0e0e0;
 }
