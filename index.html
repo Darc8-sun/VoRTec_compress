@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- ================================================================
+       【修改点 1】页面 meta 信息：替换为你的论文标题与关键词
+       ================================================================ -->
+  <meta name="description"
+    content="VoRTeC: Taming Foundation Flow for One-step Real time Low-rate Video Compression">
+  <meta name="keywords" content="video compression, neural codec, h264">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Title for Video Compression</title>
+
+  <style>
+    .hr {
+      width: 100%;
+      height: 1px;
+      margin: 48px 0;
+      background-color: #d6dbdf;
+    }
+  </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/twentytwenty.css">
+  <!-- KaTeX 样式：用于渲染页面中的 LaTeX 公式 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./assets/js/fontawesome.all.min.js"></script>
+</head>
+
+<body>
+
+  <!-- ================================================================
+       标题区：渐变标题 + 作者 + 机构 + arXiv/Code 按钮
+       【修改点 2】标题、作者、机构、链接
+       ================================================================ -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop head">
+        <div class="columns is-centered">
+          <div class="column has-text-centered head">
+            <!-- 项目 logo：替代原来的大标题位置
+                 如需替换 logo，把 logo.png 放进 assets/images/ 即可 -->
+            <img src="./assets/images/logo.png" alt="VoRTeC logo"
+              style="max-width: 420px; width: 80%; height: auto; margin-bottom: 18px;">
+
+            <!-- 合并标题：VoRTeC 使用渐变，副标题首字母保持与渐变一致的配色 -->
+            <h1 class="title is-2 publication-title" style="line-height: 1.35;">
+              <span class="title-gradient" style="font-size: 52px;">VoRTeC</span>:
+              Taming Foundation Flow for
+              <span style="color: #10002B;font-size:52px">o</span>ne-step
+              <span style="color: #5A189A;font-size:52px">R</span>eal
+              <span style="color: #9D4EDD;font-size:52px">T</span>ime Low-rate
+              <span style="color: #48BFE3;font-size:52px">V</span>id
+              <span style="color: #10002B;font-size:52px">e</span>o
+              <span style="color: #5A189A;font-size:52px">C</span>ompression
+            </h1>
+            <!-- 【修改点 2a】作者列表：按需增删 author-block；href 填个人主页，
+                 不需要链接可把 <a>...</a> 换成纯文本 -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="#">Yichong Xia</a><sup>1</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="#">Qinhong Wu</a><sup>2</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="#">Bin Chen<sup>*</sup></a><sup>2</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="#">Jinpeng Wang</a><sup>2</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="#">Zeyuan Chen</a><sup>3</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="#">Haoqian Wang</a><sup>1</sup></span>
+            </div>
+
+            <!-- 【修改点 2b】机构列表 -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Shenzhen International Graduate School, Tsinghua University, </span>
+              <span class="author-block"><sup>2</sup>Department of Computer Science, Harbin Institute of Technology, Shenzhen, </span>
+              <span class="author-block"><sup>3</sup>School of Computer Science, Peking University</span>
+            </div>
+            <div class="is-size-6 publication-authors" style="margin-top: 6px;">
+              <sup>*</sup>Corresponding author: chenbin2021@hit.edu.cn
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- arXiv Link. 【修改点 2c】替换为你的 arXiv 链接 -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- Code Link. 【修改点 2d】替换为你的 GitHub 仓库链接 -->
+                <span class="link-block">
+                  <a href="https://github.com/yourname/yourrepo" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       视频展示 · 第一行：我们的方法 vs H.264 解码（2 对，拖动滑块对比）
+       【修改点 3】放入 4 个视频：scene_a_ours / scene_a_h264 /
+                                scene_b_ours / scene_b_h264
+       ================================================================ -->
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Ours vs. H.264 Decoding</h2>
+      </div>
+      <div class="container">
+        <div class="columns is-centered">
+
+          <!-- 对比 1-1：场景 A（Ours 在左、H.264 在右，鼠标按住滑块左右拖动对比） -->
+          <div class="column is-half">
+            <div class="compare-item">
+              <div class="twentytwenty-container" data-orientation="horizontal"
+                data-before-label="Ours" data-after-label="H.264" ratio="0.5625">
+                <div class="desc">Scene A</div>
+                <div class="video">
+                  <video preload="auto" autoplay="autoplay" muted loop playsinline width="100%">
+                    <source src="./assets/videos/scene_a_ours.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="video">
+                  <video preload="auto" autoplay="autoplay" muted loop playsinline width="100%">
+                    <source src="./assets/videos/scene_a_h264.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+            <!-- 【修改点 3a】场景标签文字 -->
+            <p class="compare-label">Scene A</p>
+          </div>
+
+          <!-- 对比 1-2：场景 B -->
+          <div class="column is-half">
+            <div class="compare-item">
+              <div class="twentytwenty-container" data-orientation="horizontal"
+                data-before-label="Ours" data-after-label="H.264" ratio="0.5625">
+                <div class="desc">Scene B</div>
+                <div class="video">
+                  <video preload="auto" autoplay="autoplay" muted loop playsinline width="100%">
+                    <source src="./assets/videos/scene_b_ours.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="video">
+                  <video preload="auto" autoplay="autoplay" muted loop playsinline width="100%">
+                    <source src="./assets/videos/scene_b_h264.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+            <!-- 【修改点 3b】场景标签文字 -->
+            <p class="compare-label">Scene B</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       视频展示 · 第二行：我们的方法 vs 无损视频（2 对，拖动滑块对比）
+       【修改点 4】放入 4 个视频：scene_c_ours / scene_c_lossless /
+                                scene_d_ours / scene_d_lossless
+       ================================================================ -->
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Ours vs. Lossless</h2>
+      </div>
+      <div class="container">
+        <div class="columns is-centered">
+
+          <!-- 对比 2-1：场景 C（Ours 在左、Lossless 在右） -->
+          <div class="column is-half">
+            <div class="compare-item">
+              <div class="twentytwenty-container" data-orientation="horizontal"
+                data-before-label="Ours" data-after-label="Lossless" ratio="0.5625">
+                <div class="desc">Scene C</div>
+                <div class="video">
+                  <video preload="auto" autoplay="autoplay" muted loop playsinline width="100%">
+                    <source src="./assets/videos/scene_c_ours.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="video">
+                  <video preload="auto" autoplay="autoplay" muted loop playsinline width="100%">
+                    <source src="./assets/videos/scene_c_lossless.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+            <!-- 【修改点 4a】场景标签文字 -->
+            <p class="compare-label">Scene C</p>
+          </div>
+
+          <!-- 对比 2-2：场景 D -->
+          <div class="column is-half">
+            <div class="compare-item">
+              <div class="twentytwenty-container" data-orientation="horizontal"
+                data-before-label="Ours" data-after-label="Lossless" ratio="0.5625">
+                <div class="desc">Scene D</div>
+                <div class="video">
+                  <video preload="auto" autoplay="autoplay" muted loop playsinline width="100%">
+                    <source src="./assets/videos/scene_d_ours.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="video">
+                  <video preload="auto" autoplay="autoplay" muted loop playsinline width="100%">
+                    <source src="./assets/videos/scene_d_lossless.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+            <!-- 【修改点 4b】场景标签文字 -->
+            <p class="compare-label">Scene D</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       一句话简介（Teaser）
+       【修改点 5】替换为你方法的一句话卖点
+       ================================================================ -->
+  <section class="teaser" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; font-size: 20px;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content has-text-justified">
+            <div class="content" style="text-align: center;">
+              <br>
+              <b>VoRTeC</b> is a single-step video compression framework built upon Wan2.1, which non-intrusively learns the distribution pattern of the foundation flow through its architecture, 
+              <br>
+             enabling <span
+                style="color: #EA4335; border-bottom: 2px solid #EA4335; display: inline-block;">real-time decoding</span>  (32 fps) on 480p videos
+.
+            </div>
+            <div class="hr"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       Abstract
+       【修改点 6】替换为你的论文摘要
+       ================================================================ -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+ Ultra-low bitrate video compression still faces critical challenges: traditional neural video compression inevitably introduces blurring artifacts, while diffusion-based generative video compression suffers from excessive decoding latency and poor temporal consistency. To address these issues, we propose $\mathtt{VoRTeC}$, a Video Compression framework built upon a foundational flow model (Wan2.1). By compactly encoding latent video representations, predicting the positions of compressed representations along flow trajectories, and integrating multi-scale priors, $\mathtt{VoRTeC}$ enables the compressor to harness generative video flow priors effectively. Without accessing the parameters or gradients of flow matching networks, our framework achieves one-step decoding and reconstructions with high perceptual fidelity. Meanwhile, we maintain consistency across frame groups via tail-frame reuse and prior caching. Extensive experiments demonstrate that our method reduces bit consumption by 58\% compared to prior diffusion-based approaches, with decoding speed boosted by 3 to 197 times: $\mathtt{VoRTeC}$ achieves a decoding speed of 13 FPS at 720p and 32 FPS at 480p.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       Method
+       【修改点 7】方法介绍文字 + 架构图（assets/images/architecture.png）
+       ================================================================ -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Method</h2>
+          <div class="content has-text-justified">
+            <p>
+$\mathtt{VoRTeC}$, a Real Time Video Compression framework built upon
+a \textbf{o}ne-step foundational Flow model. $\mathtt{VoRTeC}$ compresses spatiotemporal latents into compact transmittable representations, and treats the decoding result as a temporal state along the flow path. This enables us to perform enhanced decoding even without access to the parameters or gradients of the foundation flow-matching network. Then, through a ViT-based prior fusion network, $\mathtt{VoRTeC}$ fuses and aligns the coarse-grained compressed representation with the fine-grained prior representation, ultimately achieving fast single-step decoding. Furthermore, we design an inter-group communication technique (CGG), which allows spatiotemporal information from preceding video groups to flow into subsequent groups. This ensures inter-group consistency and further reduces the bitrate without incurring additional training or decoding overhead.   </p>
+            <div class="column method-figure">
+              <!-- 【修改点 7a】架构图：将文件命名为 architecture.png 放入 assets/images/ -->
+              <img src="./assets/images/architecture.png" alt="Method overview" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       Comparison with SOTA
+       定量比较：【修改点 8】assets/images/comparison.png（表格截图）
+       定性比较：【修改点 9】静态对比图（assets/images/qual_*.png）
+       ================================================================ -->
+  <section class="hero">
+    <div class="hero-body">
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Comparison with SOTA</h2>
+          <div class="title is-4">
+            <p>
+              Quantitative Comparison
+            </p>
+            <div class="column quantitative-figure">
+              <!-- 【修改点 8a】定量对比表格图片：命名为 comparison.png 放入 assets/images/ -->
+              <img src="./assets/images/comparison.png" alt="Quantitative comparison" />
+            </div>
+          </div>
+
+          <div class="title is-4">
+            <p>
+              Qualitative Comparison
+            </p>
+          </div>
+
+          <!-- 定性比较：单张静态对比大图
+               【修改点 9】把你的定性对比图命名为 qualitative.png 放入 assets/images/。
+               建议使用一张拼接好的宽幅大图（把各方法的重建结果横向拼在一起，
+               可用 ImageMagick / PowerPoint / Photoshop 拼图）。 -->
+          <div class="column qualitative-figure">
+            <img src="./assets/images/qualitative.png" alt="Qualitative comparison" />
+            <!-- 【修改点 9a】图注：替换为你的图注说明（不需要可删除这一整个 <p> -->
+            <p class="qualitative-caption">
+Left: Comparison of rate-perception performance and decoding efficiency. $\mathtt{VoRTeC}$ (Ours) delivers a better rate–perception trade-off than prior diffusion-based video codecs and enables real-time decoding, running up to $3\times$ faster than existing diffusion-based methods. Right: Qualitative comparison between baseline and our proposed approach. $\mathtt{VoRTeC}$ (Ours) is capable of reconstructing complex textures with realism, even at extremely low bit rates.            </p>
+          </div>
+
+
+        </div>
+  </section>
+
+  <!-- ================================================================
+       BibTeX
+       【修改点 10】替换为你的论文引用信息
+       ================================================================ -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{yourname2026yourtitle,
+        title={Your Title: A Method Description for Video Compression}, 
+        author={Author 1 and Author 2 and Author 3 and Author 4},
+        year={2026},
+        eprint={XXXX.XXXXX},
+        archivePrefix={arXiv},
+        primaryClass={eess.IV},
+        url={https://arxiv.org/abs/XXXX.XXXXX}, 
+  }</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <!-- 【修改点 11】与上方按钮一致的 arXiv / GitHub 链接 -->
+        <a class="icon-link" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/yourname/yourrepo" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <div class="columns is-centered">
+              <p>
+                This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io"
+                  target="_blank">Nerfies</a> and <a href="https://shangchenzhou.com/projects/upscale-a-video/"
+                  target="_blank">Upscale-A-Video</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 访客计数徽章（默认注释）。启用方法：将下方 URL 中的 yourname.github.io%2Fyourrepo%2F
+           替换为你的 GitHub Pages 地址（%2F 是 / 的 URL 编码，需保留）后取消注释。
+      <div class="columns is-centered">
+        <div class="content">
+          <a href="https://hits.seeyoufarm.com"><img
+              src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fyourname.github.io%2Fyourrepo%2F&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visitors&edge_flat=false" /></a>
+        </div>
+      </div>
+      -->
+
+    </div>
+
+  </footer>
+
+  <!-- twentytwenty 对比滑块初始化（拖动滑块的核心脚本，请勿删除） -->
+  <script src="./assets/js/jquery.event.move.js"></script>
+  <script src="./assets/js/jquery.twentytwenty.js"></script>
+  <script>
+    $(function () {
+      $(".twentytwenty-container").twentytwenty();
+    });
+  </script>
+
+  <!-- KaTeX：自动渲染页面中的 LaTeX 公式（请勿删除）
+       行内公式用 $...$ 或 \(...\)，独立公式（单独居中一行）用 $$...$$ 或 \[...\]
+       写法示例：$R_{\psi}$ 、$$ \mathcal{L} = \|x - \hat{x}\|_1 $$ -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false },
+          { left: "\\[", right: "\\]", display: true }
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+</body>
+
+</html>
