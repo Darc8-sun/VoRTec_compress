@@ -94,7 +94,7 @@
               <div class="publication-links">
                 <!-- arXiv Link. 【修改点 2c】替换为你的 arXiv 链接 -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/2312.16963" target="_blank"
+                  <a href="https://arxiv.org/pdf/2609.02291" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -122,11 +122,7 @@
     </div>
   </section>
 
-  <!-- ================================================================
-       视频展示 · 第一行：我们的方法 vs H.264 解码（2 对，拖动滑块对比）
-       【修改点 3】放入 4 个视频：scene_a_ours / scene_a_h264 /
-                                scene_b_ours / scene_b_h264
-       ================================================================ -->
+
   <section class="hero is-light is-small">
     <div class="hero-body">
       <div class="columns is-centered has-text-centered">
@@ -184,11 +180,7 @@
     </div>
   </section>
 
-  <!-- ================================================================
-       视频展示 · 第二行：我们的方法 vs 无损视频（2 对，拖动滑块对比）
-       【修改点 4】放入 4 个视频：scene_c_ours / scene_c_lossless /
-                                scene_d_ours / scene_d_lossless
-       ================================================================ -->
+
   <section class="hero is-light is-small">
     <div class="hero-body">
       <div class="columns is-centered has-text-centered">
@@ -246,10 +238,7 @@
     </div>
   </section>
 
-  <!-- ================================================================
-       一句话简介（Teaser）
-       【修改点 5】替换为你方法的一句话卖点
-       ================================================================ -->
+
   <section class="teaser" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; font-size: 20px;">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
@@ -289,10 +278,7 @@
     </div>
   </section>
 
-  <!-- ================================================================
-       Method
-       【修改点 7】方法介绍文字 + 架构图（assets/images/architecture.png）
-       ================================================================ -->
+
   <section class="section">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
@@ -303,7 +289,6 @@
 $\mathtt{VoRTeC}$, a Real Time Video Compression framework built upon
 a \textbf{o}ne-step foundational Flow model. $\mathtt{VoRTeC}$ compresses spatiotemporal latents into compact transmittable representations, and treats the decoding result as a temporal state along the flow path. This enables us to perform enhanced decoding even without access to the parameters or gradients of the foundation flow-matching network. Then, through a ViT-based prior fusion network, $\mathtt{VoRTeC}$ fuses and aligns the coarse-grained compressed representation with the fine-grained prior representation, ultimately achieving fast single-step decoding. Furthermore, we design an inter-group communication technique (CGG), which allows spatiotemporal information from preceding video groups to flow into subsequent groups. This ensures inter-group consistency and further reduces the bitrate without incurring additional training or decoding overhead.   </p>
             <div class="column method-figure">
-              <!-- 【修改点 7a】架构图：将文件命名为 architecture.png 放入 assets/images/ -->
               <img src="./assets/images/architecture.png" alt="Method overview" />
             </div>
           </div>
@@ -372,15 +357,15 @@ Left: Comparison of rate-perception performance and decoding efficiency. $\matht
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{yourname2026yourtitle,
-        title={Your Title: A Method Description for Video Compression}, 
-        author={Author 1 and Author 2 and Author 3 and Author 4},
-        year={2026},
-        eprint={XXXX.XXXXX},
-        archivePrefix={arXiv},
-        primaryClass={eess.IV},
-        url={https://arxiv.org/abs/XXXX.XXXXX}, 
-  }</code></pre>
+      <pre><code>@misc{xia2026vortectamingfoundationflow,
+      title={VoRTeC: Taming Foundation Flow for One-step Real time Video Compression}, 
+      author={Yichong Xia and Qinhong Wu and Bin chen and Jinpeng Wang and Zeyuan Chen and Haoqian Wang},
+      year={2026},
+      eprint={2609.02291},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2609.02291}, 
+}</code></pre>
     </div>
   </section>
 
